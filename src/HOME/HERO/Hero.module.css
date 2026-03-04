@@ -1,0 +1,298 @@
+@font-face {
+  font-family: "Bank Gothic Light Regular";
+  src: url("src/COMPONENTS/FONTS/Bank Gothic Light Regular.otf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* ensures text is visible while loading */
+}
+@font-face {
+  font-family: "BITSUMIS";
+  src: url("src/COMPONENTS/FONTS/BITSUMIS.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* ensures text is visible while loading */
+}
+.Hero {
+  overflow: hidden;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #e581d1, #411ba2);
+}
+
+/* HERO BG ANIMATION SECTION */
+.Hbg1 {
+  height: max-content;
+  width: 100%;
+  position: absolute;
+  top: 45%;
+  z-index: 1;
+}
+.marquee {
+  position: relative;
+  display: flex;
+  align-items: end;
+  width: max-content;
+  height: 100%;
+  white-space: nowrap;
+}
+.marquee h1 {
+  overflow-x: hidden;
+  position: relative;
+
+  font-family: "BITSUMIS";
+  color: #ffffff1a;
+  /* -webkit-text-stroke: 2px #ffffff2b; */
+  font-size: 31.5em;
+  font-weight: bold;
+  margin-right: 120px;
+  flex-shrink: 0;
+}
+/* HERO SECTION  SCREEN 2*/
+
+.Hbg2 {
+  overflow: hidden;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 2;
+}
+.vline {
+  position: absolute;
+  bottom: 38%;
+  left: 3%;
+  width: 2px;
+  height: 48vh;
+  background-color: white;
+}
+
+.ux {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 69%;
+  right: 64%;
+  display: flex;
+  color: #ffffff;
+  font-family: "BITSUMIS";
+  transform: rotate(90deg);
+}
+.ux h2 {
+  font-size: 5.1em;
+}
+.Containermobileframes {
+  width: 100vw;
+  height: 62%;
+  display: flex;
+  justify-content: end;
+  overflow: hidden;
+  /* box-shadow: inset 0 -10px 50px -10px rgb(102, 0, 94); */
+}
+.mobileframes1 {
+  position: relative;
+  left: 8%;
+  transform: rotate(30deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Containerimage1 {
+  position: relative;
+  bottom: 45%;
+  overflow: hidden;
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mobileframes2 {
+  position: relative;
+  right: 1%;
+  transform: rotate(30deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Containerimage2 {
+  position: relative;
+  bottom: 45%;
+  overflow: hidden;
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Containerimage1 img {
+  position: relative;
+  top: 200%;
+  width: 50%;
+  opacity: 0.8;
+}
+.Containerimage2 img {
+  position: relative;
+  top: 200%;
+  width: 50%;
+  opacity: 0.8;
+}
+
+/* HERO SECTION SCREEN 3 */
+
+.Hbg3 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  z-index: 3;
+}
+
+.hline {
+  position: relative;
+  top: 12%;
+  left: 12.5%;
+  height: 2.5px;
+  width: 90vw;
+  background-color: #fff;
+}
+.sidetext {
+  height: 72px;
+  width: 750px;
+  font-family: "BITSUMIS";
+  letter-spacing: 2px;
+  position: relative;
+  left: 25%;
+  bottom: 15%;
+  color: #ffffff;
+}
+.sidetext h5:first-child {
+  margin-bottom: 30px;
+  /* text-shadow: 7px 4px 10px #2b003d78; */
+}
+.sidetext h5 {
+  font-size: 16px;
+}
+
+.socials {
+  margin: 4em 5.3em 0 0;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.socials ul {
+  list-style: none;
+  display: flex;
+}
+.socials ul li {
+  margin: 0 2.4em 0 0;
+}
+.buttons {
+  display: flex;
+  justify-content: end;
+  width: 35%;
+  position: relative;
+  top: 11%;
+  right: 18%;
+  display: flex;
+  color: white;
+}
+.buttons div {
+  padding: 4%;
+  font-family: "Bank Gothic Light Regular";
+}
+.button1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  background-color: #b874e1;
+}
+.button2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  background-color: #6a2791;
+}
+/* SMALL DEVICES RESPONSIVE 576PX AND LOW */
+
+@media (max-width: 576px) {
+  .Hero {
+    overflow: hidden;
+    width: 100vw;
+    height: 80vh;
+  }
+  .Hbg1 {
+    position: relative;
+    top: -15%;
+    left: 36%;
+    transform: rotate(90deg);
+  }
+  .marquee {
+    width: max-content;
+    height: 100%;
+    white-space: nowrap;
+  }
+  .marquee h1 {
+    font-size: 15em;
+  }
+  .vline {
+    bottom: 45%;
+    left: 4%;
+    height: 45vh;
+  }
+  .sidetext {
+    position: relative;
+    width: 40%;
+  }
+  .sidetext h4 {
+    position: relative;
+    top: 110%;
+    left: 21%;
+    font-size: 1.2em;
+  }
+  .Containermobileframes {
+    display: none;
+  }
+
+  .ux {
+    height: 100%;
+    width: 50%;
+    position: relative;
+    top: 20%;
+    left: 10%;
+    color: #fff;
+  }
+  .ux h2 {
+    transform: rotate(-90deg);
+    font-size: 3em;
+  }
+  .hline {
+    position: relative;
+    top: 20%;
+    height: 2px;
+    width: 100vw;
+    background-color: #fff;
+  }
+  .socials {
+    position: relative;
+    top: 80%;
+    left: 10%;
+  }
+  .buttons {
+    width: 8%;
+    height: 8%;
+    position: relative;
+    top: 30%;
+    right: 28%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: white;
+  }
+}

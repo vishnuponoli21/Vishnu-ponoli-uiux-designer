@@ -1,0 +1,45 @@
+@import "locomotive-scroll/dist/locomotive-scroll.css";
+
+.Home {
+  height: 100%;
+  width: 100%;
+}
+.heromain {
+  position: relative;
+  z-index: 3;
+}
+.CurveContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 275px;
+}
+.curve {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1920px;
+  height: 275px;
+}
+.About {
+  z-index: 1;
+}
+.Works {
+  height: 100vh;
+}
+
+@media (max-width: 576px) {
+  .Home {
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .CurveContainer {
+    overflow: hidden;
+    display: none;
+  }
+  .curve {
+    overflow: hidden;
+    display: none;
+  }
+}

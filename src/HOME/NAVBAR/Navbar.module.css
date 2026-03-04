@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "Bank Gothic Light Regular";
+  src: url("src/COMPONENTS/FONTS/Bank Gothic Light Regular.otf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* ensures text is visible while loading */
+}
+.Navbar {
+  color: #fff;
+  font-family: "Bank Gothic Light Regular";
+  position: fixed;
+  width: 50%;
+  background: transparent;
+  z-index: 30;
+}
+.list {
+  width: 30%;
+}
+.list ul {
+  width: 80%;
+  list-style: none;
+}
+.list ul li {
+  margin-right: 7em;
+}
+.list ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+@media (max-width: 576px) {
+  .list {
+    width: 50%;
+    display: none;
+  }
+}
