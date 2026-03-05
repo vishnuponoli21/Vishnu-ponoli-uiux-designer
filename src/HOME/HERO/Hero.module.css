@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @font-face {
   font-family: "Bank Gothic Light Regular";
   src: url("../../assets/FONTS/Bank\ Gothic\ Light\ Regular.otf")
@@ -66,7 +68,7 @@
   position: absolute;
   bottom: 38%;
   left: 3%;
-  width: 2px;
+  width: 2.5px;
   height: 48vh;
   background-color: white;
 }
@@ -86,6 +88,9 @@
   font-size: 5.1em;
 }
 .Containermobileframes {
+  opacity: 0.7;
+  position: relative;
+  right: -10%;
   width: 100vw;
   height: 62%;
   display: flex;
@@ -145,43 +150,47 @@
 .Hbg3 {
   position: absolute;
   display: flex;
+  justify-content: center;
   align-items: center;
+  width: 100vw;
   height: 100vh;
   z-index: 3;
 }
 
 .hline {
   position: relative;
-  top: 12%;
-  left: 12.5%;
+  left: 30%;
   height: 2.5px;
-  width: 90vw;
   background-color: #fff;
 }
 .sidetext {
-  height: 72px;
-  width: 750px;
-  font-family: "BITSUMIS";
-  letter-spacing: 2px;
-  position: relative;
-  left: 25%;
-  bottom: 15%;
-  color: #ffffff;
-}
-.sidetext h5:first-child {
-  margin-bottom: 30px;
-  /* text-shadow: 7px 4px 10px #2b003d78; */
-}
-.sidetext h5 {
-  font-size: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
+.text {
+  position: relative;
+  right: 7%;
+}
+
+.text p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 26px;
+  color: #ffffffcc;
+}
+.text p span {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+}
 .socials {
-  margin: 4em 5.3em 0 0;
-  height: 100%;
+  width: 100%;
   display: flex;
-  justify-content: end;
-  align-items: end;
+  justify-content: center;
 }
 
 .socials ul {
@@ -192,25 +201,24 @@
   margin: 0 2.4em 0 0;
 }
 .buttons {
-  display: flex;
-  justify-content: end;
-  width: 35%;
   position: relative;
-  top: 11%;
-  right: 18%;
+  right: 5%;
   display: flex;
   color: white;
+  height: 4em;
 }
 .buttons div {
-  padding: 4%;
-  font-family: "Bank Gothic Light Regular";
+  font-family: "poppins", sans-serif;
+  font-weight: 700;
 }
 .button1 {
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40%;
   background-color: #b874e1;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 .button2 {
   display: flex;
@@ -218,6 +226,8 @@
   align-items: center;
   width: 60%;
   background-color: #6a2791;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 /* SMALL DEVICES RESPONSIVE 576PX AND LOW */
 
@@ -246,16 +256,6 @@
     left: 4%;
     height: 45vh;
   }
-  .sidetext {
-    position: relative;
-    width: 40%;
-  }
-  .sidetext h4 {
-    position: relative;
-    top: 110%;
-    left: 21%;
-    font-size: 1.2em;
-  }
   .Containermobileframes {
     display: none;
   }
@@ -272,27 +272,36 @@
     transform: rotate(-90deg);
     font-size: 3em;
   }
-  .hline {
+  .text {
+    width: 100%;
+  }
+  .text p {
     position: relative;
-    top: 20%;
+    left: 18%;
+    font-size: 16px;
+  }
+  .text p span {
+    font-size: 26px;
+  }
+  .hline {
+    position: absolute;
+    top: 72%;
     height: 2px;
     width: 100vw;
     background-color: #fff;
   }
   .socials {
-    position: relative;
-    top: 80%;
-    left: 10%;
+    position: absolute;
+    top: 65%;
   }
   .buttons {
-    width: 8%;
-    height: 8%;
-    position: relative;
-    top: 30%;
-    right: 28%;
+    width: 100vh;
+    position: absolute;
+    left: auto;
+    right: auto;
+    top: 75%;
     display: flex;
     justify-content: center;
-    width: 100%;
     color: white;
   }
 }

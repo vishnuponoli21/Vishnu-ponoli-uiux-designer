@@ -121,49 +121,63 @@ function Hero() {
       </div>
 
       <div className={`${styles.Hbg3}`}>
-        <div className={`${styles.sidetext}`}>
-          <h4>
-            Dedicated UI/UX Designer passionate about creating intuitive,
-            user-centered digital experiences.
-          </h4>
-          <div className={`${styles.socials}`}>
-            <ul>
-              <li>
-                <a href="">
-                  {" "}
-                  <FontAwesomeIcon
-                    icon={faBehance}
-                    size="xl"
-                    style={{ color: "#ffffffed" }}
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  <FontAwesomeIcon
-                    icon={faLinkedinIn}
-                    size="xl"
-                    style={{ color: "#ffffffed" }}
-                  />
-                </a>
-              </li>
-              <li>
-                {" "}
-                <a href="">
-                  <FontAwesomeIcon
-                    icon={faGithub}
-                    size="xl"
-                    style={{ color: "#ffffffed" }}
-                  />
-                </a>
-              </li>
-            </ul>
+        <div className="containerfluid">
+          <div className={`${styles.sidetext} row`}>
+            <div className={`${styles.text} col-sm-3 col-md-7 `}>
+              <p>
+                Dedicated to <span>Crafting</span> seamless and engaging user
+                experiences through thoughtful <span>Design</span>, usability
+                principles, and <span>Modern</span> frontend technologies.
+              </p>
+            </div>
           </div>
-        </div>
-        <div className={`${styles.hline}`}></div>
-        <div className={`${styles.buttons}`}>
-          <div className={`${styles.button1} text-center`}>CONNECT</div>
-          <div className={`${styles.button2} text-center`}>DOWNLOAD RESUME</div>
+          <div className={`${styles.socials} row`}>
+            {" "}
+            <div className={`col-md-6`}>
+              <ul>
+                <li>
+                  <a href="">
+                    {" "}
+                    <FontAwesomeIcon
+                      icon={faBehance}
+                      size="xl"
+                      style={{ color: "#ffffffed" }}
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <FontAwesomeIcon
+                      icon={faLinkedinIn}
+                      size="xl"
+                      style={{ color: "#ffffffed" }}
+                    />
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a href="">
+                    <FontAwesomeIcon
+                      icon={faGithub}
+                      size="xl"
+                      style={{ color: "#ffffffed" }}
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="row d-flex justify-content-end align-items-center">
+            <div
+              className={`${styles.hline} d-flex justify-content-end col-md-6`}
+            ></div>
+            <div className={`${styles.buttons} col-md-6`}>
+              <div className={`${styles.button1} text-center`}>CONNECT</div>
+              <div className={`${styles.button2} text-center`}>
+                DOWNLOAD RESUME
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
