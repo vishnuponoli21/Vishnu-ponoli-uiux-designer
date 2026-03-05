@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./Hero.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import bushunted from "../../assets/IMAGE/bus hunt.png";
+import nidraed from "../../assets/IMAGE/nidra.png";
 import {
   faLinkedinIn,
   faGithub,
@@ -102,21 +104,13 @@ function Hero() {
         <div className={`${styles.Containermobileframes}`}>
           <div className={`${styles.mobileframes1}`}>
             <div className={`${styles.Containerimage1}`}>
-              <img
-                ref={bushunt}
-                src="src/HOME/HERO/IMAGE/bus hunt.png"
-                alt="BUS HINT FRAMES"
-              />
+              <img ref={bushunt} src={bushunted} alt="BUS HINT FRAMES" />
             </div>
           </div>
 
           <div className={`${styles.mobileframes2}`}>
             <div className={`${styles.Containerimage2}`}>
-              <img
-                ref={nidra}
-                src="src/HOME/HERO/IMAGE/nidra.png"
-                alt="BUS HINT FRAMES"
-              />
+              <img ref={nidra} src={nidraed} alt="BUS HINT FRAMES" />
             </div>
           </div>
         </div>

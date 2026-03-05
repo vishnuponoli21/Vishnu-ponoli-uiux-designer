@@ -1,13 +1,14 @@
 @font-face {
   font-family: "Bank Gothic Light Regular";
-  src: url("src/assets/FONTS/Bank Gothic Light Regular.otf") format("opentype");
+  src: url("../../assets/FONTS/Bank\ Gothic\ Light\ Regular.otf")
+    format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* ensures text is visible while loading */
 }
 @font-face {
   font-family: "BITSUMIS";
-  src: url("src/assets/FONTS/BITSUMIS.TTF") format("truetype");
+  src: url("../../assets/FONTS/BITSUMIS.TTF") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* ensures text is visible while loading */
@@ -44,7 +45,7 @@
   overflow-x: hidden;
   position: relative;
 
-  font-family: "BITSUMIS";
+  font-family: "BITSUMIS", sans-serif;
   color: #ffffff1a;
   /* -webkit-text-stroke: 2px #ffffff2b; */
   font-size: 31.5em;

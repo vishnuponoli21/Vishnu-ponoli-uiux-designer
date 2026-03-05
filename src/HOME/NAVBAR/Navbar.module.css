@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Bank Gothic Light Regular";
-  src: url("src/assets/FONTS/Bank Gothic Light Regular.otf") format("opentype");
+  src: url("../../assets/FONTS/Bank\ Gothic\ Light\ Regular.otf")
+    format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* ensures text is visible while loading */

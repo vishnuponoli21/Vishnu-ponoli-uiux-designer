@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Bank Gothic Light Regular";
+  src: url("./assets/FONTS/Bank Gothic Light Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* ensures text is visible while loading */
+}
+@font-face {
+  font-family: "BITSUMIS";
+  src: url("./assets/FONTS/BITSUMIS.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* ensures text is visible while loading */
+}
