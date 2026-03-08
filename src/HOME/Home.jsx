@@ -11,8 +11,30 @@ import LocomotiveScroll from "locomotive-scroll";
 gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
-  const scroll = new LocomotiveScroll();
+  const scrollContainer = useRef(null);
   const curve = useRef();
+
+  useEffect(() => {
+    const scrollEl = scrollContainer.current;
+    if (!scrollEl) return;
+
+    const scroll = new LocomotiveScroll({
+      lenisOptions: {
+        wrapper: window,
+        content: document.documentElement,
+      },
+      scrollCallback: () => ScrollTrigger.update(),
+    });
+
+    const onRefresh = () => scroll.resize();
+    ScrollTrigger.addEventListener("refresh", onRefresh);
+    ScrollTrigger.refresh();
+
+    return () => {
+      ScrollTrigger.removeEventListener("refresh", onRefresh);
+      scroll.destroy();
+    };
+  }, []);
 
   useGSAP(() => {
     gsap.to(curve.current, {
@@ -21,6 +43,7 @@ function Home() {
       scrollTrigger: {
         trigger: curve.current,
         start: "top 30%",
+        end: "bottom top",
         scrub: true,
         markers: false,
       },
@@ -28,7 +51,11 @@ function Home() {
   });
   return (
     <>
-      <div data-scroll data-scroll-speed="0.2" className={`${styles.Home}`}>
+      <div
+        ref={scrollContainer}
+        data-scroll-container
+        className={`${styles.Home}`}
+      >
         <div>
           <Navbar />
         </div>
@@ -36,7 +63,7 @@ function Home() {
         <div className={`${styles.heromain}`}>
           <Hero />
         </div>
-        <div lassName={`${styles.CurveContainer}`}>
+        <div className={`${styles.CurveContainer}`}>
           <svg
             ref={curve}
             className={styles.curve}
@@ -59,8 +86,8 @@ function Home() {
                 y2="170"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#7C40B3" />
-                <stop offset="1" stop-color="#431CA2" />
+                <stop stopColor="#7C40B3" />
+                <stop offset="1" stopColor="#431CA2" />
               </linearGradient>
             </defs>
           </svg>
@@ -69,7 +96,7 @@ function Home() {
         <div className={`${styles.About}`}>
           <About />
         </div>
-        <div className={`${styles.Works}`}>hello</div>
+        {/* <div className={`${styles.Works}`}>hello</div> */}
       </div>
     </>
   );

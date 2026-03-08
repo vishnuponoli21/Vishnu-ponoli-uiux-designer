@@ -12,28 +12,10 @@
   color: #fff;
   font-family: "poppins", sans-serif;
   position: fixed;
-  width: 50%;
+  width: 100%;
   background: transparent;
   z-index: 30;
 }
-.list {
-  width: 30%;
-}
-.list ul {
-  width: 80%;
-  list-style: none;
-}
-.list ul li {
-  margin-right: 7em;
-}
-.list ul li a {
-  text-decoration: none;
-  color: white;
-}
 
 @media (max-width: 576px) {
-  .list {
-    width: 50%;
-    display: none;
-  }
 }

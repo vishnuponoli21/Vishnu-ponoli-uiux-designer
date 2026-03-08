@@ -10,19 +10,9 @@ function Navbar() {
         <h2>VP</h2>
       </div>
       <div
-        className={`${styles.list} w-100 d-flex align-items-center justify-content-end d-none d-md-block`}
+        className={`${styles.list} d-flex justify-content-center align-items-center`}
       >
-        <ul className="w-100 d-flex align-items-center justify-content-end">
-          <li>
-            <a href="#About">ABOUT</a>
-          </li>
-          <li>
-            <a href="">WORKS</a>
-          </li>
-          <li>
-            <a href="">CONNECT</a>
-          </li>
-        </ul>
+        hello
       </div>
     </div>
   );

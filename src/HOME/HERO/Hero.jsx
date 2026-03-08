@@ -136,7 +136,10 @@ function Hero() {
             <div className={`col-md-6`}>
               <ul>
                 <li>
-                  <a href="">
+                  <a
+                    href="https://www.behance.net/vishnuponoli_creativ"
+                    target="blank"
+                  >
                     {" "}
                     <FontAwesomeIcon
                       icon={faBehance}
@@ -146,7 +149,10 @@ function Hero() {
                   </a>
                 </li>
                 <li>
-                  <a href="">
+                  <a
+                    href="https://www.linkedin.com/in/vishnu-ponoli?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BwFi%2BHAE%2FTW2ZLseGc%2FRu1g%3D%3D"
+                    target="blank"
+                  >
                     <FontAwesomeIcon
                       icon={faLinkedinIn}
                       size="xl"
@@ -156,7 +162,7 @@ function Hero() {
                 </li>
                 <li>
                   {" "}
-                  <a href="">
+                  <a href="https://github.com/vishnuponoli21" target="blank">
                     <FontAwesomeIcon
                       icon={faGithub}
                       size="xl"
@@ -168,9 +174,9 @@ function Hero() {
             </div>
           </div>
           <div className="row d-flex justify-content-end align-items-center">
-            <div
-              className={`${styles.hline} d-flex justify-content-end col-md-6`}
-            ></div>
+            <div className={`col-md-6`}>
+              <div className={`${styles.hline}`}></div>
+            </div>
             <div className={`${styles.buttons} col-md-6`}>
               <div className={`${styles.button1} text-center`}>CONNECT</div>
               <div className={`${styles.button2} text-center`}>

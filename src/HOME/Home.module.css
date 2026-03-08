@@ -3,29 +3,33 @@
 .Home {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 .heromain {
   position: relative;
-  z-index: 3;
+  z-index: 4;
 }
 .CurveContainer {
-  position: relative;
+  position: absolute;
+  top: 55%;
   width: 100%;
-  overflow: hidden;
-  height: 275px;
+  height: 475px;
+  z-index: 3;
 }
 .curve {
-  position: absolute;
-  top: 20%;
-  left: 53%;
+  position: relative;
+  left: 50%;
   transform: translateX(-50%);
   width: 1920px;
   height: 275px;
+  z-index: 2;
 }
 .About {
-  z-index: 1;
+  overflow: hidden;
+  z-index: 2;
 }
 .Works {
+  background-color: black;
   height: 100vh;
 }
 
