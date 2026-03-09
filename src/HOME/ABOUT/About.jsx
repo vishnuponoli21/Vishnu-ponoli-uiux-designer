@@ -331,7 +331,10 @@ function About() {
                 className={`${styles.btn} d-flex justify-content-center align-items-center`}
               >
                 {" "}
-                <a href="mailto:vishnuponoli21@gmail.com">
+                <a
+                  href=" https://wa.me/971504325231?text=Hello! I’d like to connect and discuss About Design projects."
+                  target="blank"
+                >
                   <div className={styles.btnText}>LETS CHAT</div>
                 </a>
               </div>

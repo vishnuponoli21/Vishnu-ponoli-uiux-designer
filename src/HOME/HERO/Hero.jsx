@@ -5,6 +5,7 @@ import styles from "./Hero.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import bushunted from "../../assets/IMAGE/bus hunt.png";
 import nidraed from "../../assets/IMAGE/nidra.png";
+import mycv from "../../assets/MYCV/vishnuPonoli.pdf";
 import {
   faLinkedinIn,
   faGithub,
@@ -24,58 +25,58 @@ function Hero() {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width:768px)", () => {
-        // ✅ master looping timeline
         const loopAnim = gsap.timeline({ repeat: -1 });
 
-        // Parallel animation
         loopAnim
-          .to(
-            word.current,
-            { xPercent: -10, duration: 25, ease: "none", repeat: -1 },
-            0,
-          )
+          .to(word.current, { xPercent: -13, duration: 155, ease: "none" }, 0)
           .to(
             bushunt.current,
-            { yPercent: -15, duration: 20, ease: "none", repeat: -1 },
+            {
+              yPercent: -15,
+              duration: 20,
+              ease: "none",
+              yoyo: true,
+              repeat: 1,
+            },
             0,
           )
           .to(
             nidra.current,
-            { yPercent: 15, duration: 20, ease: "none", repeat: -1 },
+            { yPercent: 15, duration: 20, ease: "none", yoyo: true, repeat: 1 },
             0,
           );
 
-        // Force timeline to start immediately
-        loopAnim.play();
+        loopAnim.timeScale(1).play();
 
-        // ✅ Scroll-triggered smooth velocity reversal
-        const st = ScrollTrigger.create({
+        const setLoopSpeed = gsap.quickTo(loopAnim, "timeScale", {
+          duration: 0.35,
+          ease: "power2.out",
+        });
+        let resetSpeedDelay;
+
+        ScrollTrigger.create({
           trigger: section.current,
-          start: "top 0",
-          end: "bottom ",
+          start: "top top",
+          end: "bottom top",
           markers: false,
-          scrub: true,
           onUpdate: (self) => {
-            // velocity-based smooth reverse
-            gsap.to(loopAnim, {
-              timeScale: -self.getVelocity() * 0.03,
-              duration: 0.4,
-              ease: "power3.out",
-            });
+            const velocity = self.getVelocity();
+            const delta = gsap.utils.clamp(-0.5, 0.5, velocity / 2500);
+            setLoopSpeed(1 + delta);
+
+            if (resetSpeedDelay) resetSpeedDelay.kill();
+            resetSpeedDelay = gsap.delayedCall(0.12, () => setLoopSpeed(1));
           },
         });
 
-        // Refresh ScrollTrigger after all images/fonts load
         const onLoad = () => {
           ScrollTrigger.refresh();
         };
         window.addEventListener("load", onLoad);
 
-        // Cleanup listener
         return () => window.removeEventListener("load", onLoad);
       });
 
-      // SMALL DEVICES fallback
       mm.add("(max-width:767px)", () => {
         gsap.to(word.current, {
           xPercent: -7,
@@ -93,7 +94,7 @@ function Hero() {
     <div ref={section} className={`${styles.Hero}`}>
       <div className={`${styles.Hbg1}`}>
         <div className={`${styles.marquee}`} ref={word}>
-          {Array.from({ length: 12 }).map((_, i) => (
+          {Array.from({ length: 112 }).map((_, i) => (
             <h1 key={i}>VISHNU PONOLI </h1>
           ))}
         </div>
@@ -178,10 +179,20 @@ function Hero() {
               <div className={`${styles.hline}`}></div>
             </div>
             <div className={`${styles.buttons} col-md-6`}>
-              <div className={`${styles.button1} text-center`}>CONNECT</div>
-              <div className={`${styles.button2} text-center`}>
-                DOWNLOAD RESUME
-              </div>
+              <a
+                className={`${styles.button1} text-center`}
+                href="mailto:vishnuponoli21@gmail.com"
+              >
+                CONNECT
+              </a>
+              <a
+                className={`${styles.button2} text-center`}
+                href={mycv}
+                target="blank"
+              >
+                {" "}
+                VIEW RESUME
+              </a>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@
   font-display: swap; /* ensures text is visible while loading */
 }
 .Hero {
-  overflow: visible;
+  overflow: hidden;
   position: relative;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -212,28 +212,32 @@
   display: flex;
   color: white;
   height: 4em;
-}
-.buttons div {
+  text-decoration: none;
   font-family: "poppins", sans-serif;
   font-weight: 700;
 }
+
 .button1 {
   width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #ffffff;
   background-color: #b874e1;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
+  text-decoration: none;
 }
 .button2 {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 60%;
+  color: #ffffff;
   background-color: #6a2791;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
+  text-decoration: none;
 }
 
 .button1 ::before,

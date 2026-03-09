@@ -8,10 +8,12 @@
   font-display: swap; /* ensures text is visible while loading */
 }
 
+/* FOR LARGER DEVICES */
+
 .About {
   box-sizing: border-box;
   width: 100%;
-  height: 120vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +22,7 @@
 .Abg1 {
   position: absolute;
   width: 100%;
-  height: 120vh;
+  height: 100vh;
   z-index: 5;
   background: transparent;
 }
@@ -40,7 +42,7 @@
 }
 .firstRow {
   position: relative;
-  top: 8em;
+  top: 1em;
 }
 
 .skills ul {
@@ -79,7 +81,7 @@
 
 .secondRow {
   position: relative;
-  top: 4em;
+  top: 1em;
 }
 
 /* .aboutButton {
@@ -158,4 +160,9 @@
   font-size: 20;
   font-weight: 300;
   color: black;
+}
+
+/* MOBILE DEVICES */
+
+@media (max-width: 576px) {
 }

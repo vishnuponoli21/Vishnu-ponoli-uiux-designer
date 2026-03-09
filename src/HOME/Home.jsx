@@ -13,15 +13,22 @@ gsap.registerPlugin(ScrollTrigger);
 function Home() {
   const scrollContainer = useRef(null);
   const curve = useRef();
+  const horizontalContainer = useRef(null);
 
   useEffect(() => {
-    const scrollEl = scrollContainer.current;
-    if (!scrollEl) return;
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
 
     const scroll = new LocomotiveScroll({
       lenisOptions: {
         wrapper: window,
         content: document.documentElement,
+        smoothWheel: true,
+        syncTouch: true,
+        lerp: 0.08,
+        wheelMultiplier: 0.9,
       },
       scrollCallback: () => ScrollTrigger.update(),
     });
@@ -36,19 +43,60 @@ function Home() {
     };
   }, []);
 
-  useGSAP(() => {
-    gsap.to(curve.current, {
-      yPercent: 45,
-      duration: 3,
-      scrollTrigger: {
-        trigger: curve.current,
-        start: "top 30%",
-        end: "bottom top",
-        scrub: true,
-        markers: false,
-      },
-    });
-  });
+  useGSAP(
+    () => {
+      if (!curve.current || !horizontalContainer.current) return;
+
+      const t1 = gsap.timeline();
+      t1.to(curve.current, {
+        yPercent: 45,
+        duration: 3,
+        scrollTrigger: {
+          trigger: curve.current,
+          start: "top 30%",
+          end: "bottom top",
+          scrub: true,
+          markers: false,
+        },
+      });
+
+      const sections = gsap.utils.toArray(
+        ".panel",
+        horizontalContainer.current,
+      );
+      if (sections.length < 2) return;
+
+      const getTravel = () =>
+        Math.max(
+          horizontalContainer.current.scrollWidth - window.innerWidth,
+          0,
+        );
+      const getDelay = () => window.innerHeight * 0.5;
+
+      const horizontalTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: horizontalContainer.current,
+          pin: true,
+          scrub: 1,
+          start: "top top",
+          end: () => "+=" + (getTravel() + getDelay()),
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+        },
+      });
+
+      horizontalTl.to({}, { duration: getDelay() }).to(
+        sections,
+        {
+          xPercent: -100 * (sections.length - 1),
+          ease: "none",
+          duration: getTravel(),
+        },
+        ">",
+      );
+    },
+    { dependencies: [] },
+  );
   return (
     <>
       <div
@@ -67,7 +115,7 @@ function Home() {
           <svg
             ref={curve}
             className={styles.curve}
-            width="1920"
+            width="1120"
             height="275"
             viewBox="0 0 1920 275"
             fill="none"
@@ -93,10 +141,21 @@ function Home() {
           </svg>
         </div>
 
-        <div className={`${styles.About}`}>
-          <About />
+        <div
+          ref={horizontalContainer}
+          className={`${styles.HorizontalScrollWrapper} d-flex`}
+        >
+          <div className={`${styles.scrollWrapper} scroll-wrapper`}>
+            <section
+              className={`panel ${styles.About} ${styles.panel} bg-dark z-1`}
+            >
+              <About />
+            </section>
+            <section
+              className={`panel ${styles.Works} ${styles.panel} z-2`}
+            ></section>
+          </div>
         </div>
-        {/* <div className={`${styles.Works}`}>hello</div> */}
       </div>
     </>
   );

@@ -24,13 +24,35 @@
   height: 275px;
   z-index: 2;
 }
+
 .About {
   overflow: hidden;
   z-index: 2;
 }
 .Works {
-  background-color: black;
+  background-color: rgb(255, 255, 255) !important;
   height: 100vh;
+}
+
+.HorizontalScrollWrapper {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.scrollWrapper {
+  display: flex;
+  width: max-content;
+}
+
+.panel {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 576px) {
