@@ -332,7 +332,7 @@ function About() {
               >
                 {" "}
                 <a
-                  href=" https://wa.me/971504325231?text=Hello! I’d like to connect and discuss About Design projects."
+                  href=" https://wa.me/971504325231?text=Hello!"
                   target="blank"
                 >
                   <div className={styles.btnText}>LETS CHAT</div>
