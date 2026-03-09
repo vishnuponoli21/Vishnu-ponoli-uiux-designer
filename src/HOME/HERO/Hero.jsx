@@ -79,8 +79,8 @@ function Hero() {
 
       mm.add("(max-width:767px)", () => {
         gsap.to(word.current, {
-          xPercent: -7,
-          duration: 12,
+          xPercent: -12,
+          duration: 155,
           repeat: -1,
           ease: "none",
         });

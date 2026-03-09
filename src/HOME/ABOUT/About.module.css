@@ -157,7 +157,7 @@
 
 .rightText p {
   font-family: "poppins", sans-serif;
-  font-size: 20;
+  font-size: 16px;
   font-weight: 300;
   color: black;
 }
@@ -165,4 +165,34 @@
 /* MOBILE DEVICES */
 
 @media (max-width: 576px) {
+  .aboutbgimg {
+    width: 155%;
+  }
+  .firstRow {
+    position: relative;
+  }
+  .mainAboutText h1 {
+    font-size: 80px;
+    font-weight: 500;
+    z-index: -1;
+  }
+  .secondRow {
+    position: relative;
+  }
+  .skills ul {
+    margin: 19.9em 0 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
+
+  .leftText p {
+    font-size: 15px;
+    margin: 0 15px 0 15px;
+  }
+  .leftText .leftTextWrapper {
+    height: 50%;
+    background: #ffffff8e;
+  }
 }

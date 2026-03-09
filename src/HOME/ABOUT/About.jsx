@@ -25,7 +25,7 @@ function About() {
           <div
             className={`${styles.firstRow} row h-50  d-flexbox justify-content-center align-items-center`}
           >
-            <div className="col-md-3 col-sm-3 w-30">
+            <div className="col-md-3 col-sm-5 w-30">
               <div className={styles.mainAboutText}>
                 <h1>
                   ALL
@@ -38,8 +38,8 @@ function About() {
                 </h1>
               </div>
             </div>
-            <div className="col-md-5 col-sm-3 w-30"></div>
-            <div className="col-md-3 col-sm-3 w-30">
+            <div className="col-md-5 col-sm-1 "></div>
+            <div className="col-md-3 col-sm-5 ">
               <div className={`${styles.skills}`}>
                 <ul>
                   <li>
@@ -304,12 +304,12 @@ function About() {
             className={`${styles.secondRow} row h-50  d-flexbox justify-content-center align-items-center`}
           >
             <div
-              className={`${styles.leftText} col-md-3 col-sm-3 d-flex justify-content-center align-items-center col-sm-3  h-50`}
+              className={`${styles.leftText} col-md-3 col-sm-3 d-flex justify-content-center align-items-end h-50`}
             >
-              <div>
+              <div className={`${styles.leftTextWrapper}`}>
                 <div className={`${styles.vline}`}></div>
                 <p>
-                  Hi Iam
+                  Hi I am
                   <span
                     style={{
                       fontSize: "20px",
@@ -320,9 +320,9 @@ function About() {
                     {" "}
                     Vishnu Ponoli{" "}
                   </span>
-                  As a UI/UX designer, my goal is to design interfaces that are
+                  as an UI/UX designer, my goal is to design interfaces that are
                   easy to use, attractive, and improve the overall user
-                  experience
+                  experience.
                 </p>
               </div>
             </div>
@@ -374,7 +374,7 @@ function About() {
                 >
                   Adobe Illustrator
                 </span>{" "}
-                to create clean and visually engaging designs. building
+                to create clean and visually engaging designs. <br /> Building
                 responsive and interactive interfaces using React and Bootstrap,
                 focusing on usability, performance, and modern web standards.
               </p>
