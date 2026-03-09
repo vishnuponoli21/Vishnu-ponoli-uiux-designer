@@ -180,7 +180,7 @@
     position: relative;
   }
   .skills ul {
-    margin: 19.9em 0 0 0;
+    margin: 15.5em 0 0 0;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -194,5 +194,19 @@
   .leftText .leftTextWrapper {
     height: 50%;
     background: #ffffff8e;
+  }
+
+  .rightText {
+    display: none;
+  }
+
+  .btn {
+    background: linear-gradient(to right, #df7dcf, #411ba2);
+    box-shadow:
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+      inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+      0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+      0px 0px 180px 0px #9917ff;
+    transform: translateY(-2px);
   }
 }

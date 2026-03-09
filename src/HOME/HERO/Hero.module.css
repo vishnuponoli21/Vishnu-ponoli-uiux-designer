@@ -315,6 +315,7 @@
   }
   .text p {
     position: relative;
+    top: 20%;
     left: 18%;
     font-size: 16px;
   }
