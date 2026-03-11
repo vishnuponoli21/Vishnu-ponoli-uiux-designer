@@ -9,13 +9,29 @@
   font-display: swap; /* ensures text is visible while loading */
 }
 .Navbar {
-  color: #fff;
   font-family: "poppins", sans-serif;
-  position: fixed;
-  width: 100%;
+  position: absolute;
+  width: 100vw;
   background: transparent;
   z-index: 30;
 }
 
+.logo img {
+  position: relative;
+  width: 15%;
+}
+
+.list {
+  width: 190%;
+  height: auto;
+  position: fixed;
+  display: flex;
+  justify-content: end;
+  color: black;
+}
+
 @media (max-width: 576px) {
+  .Navbar {
+    position: absolute;
+  }
 }

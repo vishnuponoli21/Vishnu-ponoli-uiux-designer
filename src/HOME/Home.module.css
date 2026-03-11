@@ -8,6 +8,7 @@
 .heromain {
   position: relative;
   z-index: 4;
+  overflow: hidden;
 }
 .CurveContainer {
   position: absolute;
@@ -15,6 +16,7 @@
   width: 100%;
   height: 475px;
   z-index: 3;
+  overflow: hidden;
 }
 .curve {
   position: relative;
@@ -56,16 +58,22 @@
 }
 
 @media (max-width: 576px) {
-  .Home {
-    box-sizing: border-box;
-    overflow: hidden;
+  .HorizontalScrollWrapper {
+    height: auto;
+    overflow: visible;
   }
+
   .CurveContainer {
-    overflow: hidden;
     display: none;
   }
-  .curve {
-    overflow: hidden;
-    display: none;
+
+  .scrollWrapper {
+    display: block;
+    width: 100%;
+  }
+
+  .panel {
+    width: 100%;
+    height: auto;
   }
 }

@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "BITSUMIS";
+  src: url("../../assets/FONTS/BITSUMIS.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* ensures text is visible while loading */
+}
+
+.Work {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.workText {
+  font-family: "BITSUMIS";
+  /* Fallback color for older browsers */
+  color: #7319fa;
+
+  /* Apply the linear gradient as a background image */
+  background-image: linear-gradient(to right, #e27fd0, #421ba2);
+
+  /* Clip the background to the text's shape */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Make the text transparent to reveal the background */
+  -webkit-text-fill-color: transparent;
+
+  /* Other styling for better visibility */
+  font-size: 100px;
+  font-weight: 500;
+}

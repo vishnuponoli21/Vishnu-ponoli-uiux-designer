@@ -39,7 +39,7 @@ function About() {
               </div>
             </div>
             <div className="col-md-5 col-sm-1 "></div>
-            <div className="col-md-3 col-sm-5 ">
+            <div className="col-md-3 col-sm-1 ">
               <div className={`${styles.skills}`}>
                 <ul>
                   <li>

@@ -32,17 +32,23 @@ function Hero() {
           .to(
             bushunt.current,
             {
-              yPercent: -15,
-              duration: 20,
+              yPercent: -25,
+              duration: 30,
               ease: "none",
               yoyo: true,
-              repeat: 1,
+              repeat: -1,
             },
             0,
           )
           .to(
             nidra.current,
-            { yPercent: 15, duration: 20, ease: "none", yoyo: true, repeat: 1 },
+            {
+              yPercent: 25,
+              duration: 30,
+              ease: "none",
+              yoyo: true,
+              repeat: -1,
+            },
             0,
           );
 

@@ -140,7 +140,8 @@
   text-decoration: none;
 }
 .btn:active {
-  background: linear-gradient(to left, #df7dcf, #411ba2);
+  background: #000;
+  color: #ffffff;
 }
 /* 2nd row left text */
 .leftText p {
@@ -166,6 +167,8 @@
 
 @media (max-width: 576px) {
   .aboutbgimg {
+    position: relative;
+    right: 15%;
     width: 155%;
   }
   .firstRow {
@@ -179,28 +182,43 @@
   .secondRow {
     position: relative;
   }
+
+  .skills {
+    display: none;
+  }
+
   .skills ul {
+    display: block;
     margin: 15.5em 0 0 0;
     padding: 0;
-    display: flex;
+  }
+
+  .leftText {
+    margin: 10em 0 0 0;
+  }
+
+  .leftText .leftTextWrapper {
+    position: relative;
+    top: 12%;
+    /* display: flex; */
     justify-content: center;
-    list-style: none;
+    align-items: center;
+    background: #ffffff6d;
   }
 
   .leftText p {
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: 400;
     margin: 0 15px 0 15px;
   }
-  .leftText .leftTextWrapper {
-    height: 50%;
-    background: #ffffff8e;
-  }
 
-  .rightText {
+  .rightText p {
     display: none;
   }
 
   .btn {
+    position: relative;
+    bottom: 10%;
     background: linear-gradient(to right, #df7dcf, #411ba2);
     box-shadow:
       inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
