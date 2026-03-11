@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import LocomotiveScroll from "locomotive-scroll";
+
 import styles from "./Home.module.css";
 import Hero from "./HERO/Hero";
 import Navbar from "./NAVBAR/Navbar";
 import About from "./ABOUT/About";
-import { useGSAP } from "@gsap/react";
-import LocomotiveScroll from "locomotive-scroll";
 import Work from "./WORKS/Work";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,10 +21,10 @@ function Home() {
   let locoScroll;
 
   /* ---------------- LOCOMOTIVE ---------------- */
-
   useEffect(() => {
     window.scrollTo(0, 0);
 
+    // Initialize LocomotiveScroll
     locoScroll = new LocomotiveScroll({
       el: scrollContainer.current,
       smooth: true,
@@ -31,8 +32,7 @@ function Home() {
       tablet: { smooth: false },
     });
 
-    /* CONNECT GSAP */
-
+    // Connect GSAP ScrollTrigger with LocomotiveScroll
     ScrollTrigger.scrollerProxy(scrollContainer.current, {
       scrollTop(value) {
         if (arguments.length) {
@@ -41,7 +41,6 @@ function Home() {
           return locoScroll.scroll?.y || window.scrollY;
         }
       },
-
       getBoundingClientRect() {
         return {
           top: 0,
@@ -52,17 +51,16 @@ function Home() {
       },
     });
 
-    /* RAF SYNC */
-
+    // RequestAnimationFrame sync
     const raf = () => {
       ScrollTrigger.update();
       requestAnimationFrame(raf);
     };
-
     requestAnimationFrame(raf);
 
     ScrollTrigger.refresh();
 
+    // Cleanup
     return () => {
       locoScroll.destroy();
       ScrollTrigger.killAll();
@@ -70,12 +68,10 @@ function Home() {
   }, []);
 
   /* ---------------- GSAP ---------------- */
-
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
-    /* NAVBAR COLOR */
-
+    // Navbar color change
     ScrollTrigger.create({
       trigger: ".panel",
       scroller: scrollContainer.current,
@@ -84,11 +80,11 @@ function Home() {
       onLeaveBack: () => setNavDark(false),
     });
 
-    /* DESKTOP ONLY */
-
+    // Desktop animations
     mm.add("(min-width: 577px)", () => {
       if (!curve.current || !horizontalContainer.current) return;
 
+      // Curve animation
       gsap.to(curve.current, {
         yPercent: 45,
         scrollTrigger: {
@@ -100,15 +96,14 @@ function Home() {
         },
       });
 
+      // Horizontal scroll sections
       const sections = gsap.utils.toArray(
         ".panel",
         horizontalContainer.current,
       );
-
       gsap.to(sections, {
         xPercent: -100 * (sections.length - 1),
         ease: "none",
-
         scrollTrigger: {
           trigger: horizontalContainer.current,
           scroller: scrollContainer.current,
@@ -125,7 +120,6 @@ function Home() {
   });
 
   /* ---------------- JSX ---------------- */
-
   return (
     <div ref={scrollContainer} data-scroll-container className={styles.Home}>
       <Navbar navDark={navDark} />
@@ -135,7 +129,6 @@ function Home() {
       </div>
 
       {/* CURVE */}
-
       <div className={styles.CurveContainer}>
         <svg
           ref={curve}
@@ -149,7 +142,6 @@ function Home() {
             d="M1920 0H0V171C0 171 408.5 275 960 275C1511.5 275 1920 171 1920 171V0Z"
             fill="url(#paint0_linear_1349_368)"
           />
-
           <defs>
             <linearGradient
               id="paint0_linear_1349_368"
@@ -166,8 +158,7 @@ function Home() {
         </svg>
       </div>
 
-      {/* HORIZONTAL */}
-
+      {/* HORIZONTAL SCROLL SECTIONS */}
       <div
         ref={horizontalContainer}
         className={`${styles.HorizontalScrollWrapper} d-flex`}
@@ -176,7 +167,6 @@ function Home() {
           <section className={`panel ${styles.panel} ${styles.About}`}>
             <About />
           </section>
-
           <section className={`panel ${styles.panel} ${styles.Works}`}>
             <Work />
           </section>
