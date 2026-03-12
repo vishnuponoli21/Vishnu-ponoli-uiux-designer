@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useLayoutEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import LocomotiveScroll from "locomotive-scroll";
 
 import styles from "./Home.module.css";
@@ -10,35 +9,39 @@ import Navbar from "./NAVBAR/Navbar";
 import About from "./ABOUT/About";
 import Work from "./WORKS/Work";
 
+import "locomotive-scroll/dist/locomotive-scroll.css";
+
 gsap.registerPlugin(ScrollTrigger);
 
-function Home() {
-  const scrollContainer = useRef(null);
-  const curve = useRef(null);
-  const horizontalContainer = useRef(null);
+export default function Home() {
+  const scrollRef = useRef(null);
+  const curveRef = useRef(null);
+  const horizontalRef = useRef(null);
+  const locoScroll = useRef(null);
   const [navDark, setNavDark] = useState(false);
 
-  let locoScroll;
-
-  /* ---------------- LOCOMOTIVE ---------------- */
-  useEffect(() => {
-    window.scrollTo(0, 0);
+  useLayoutEffect(() => {
+    if (!scrollRef.current) return;
 
     // Initialize LocomotiveScroll
-    locoScroll = new LocomotiveScroll({
-      el: scrollContainer.current,
+    locoScroll.current = new LocomotiveScroll({
+      el: scrollRef.current,
       smooth: true,
+      multiplier: 1,
       smartphone: { smooth: false },
       tablet: { smooth: false },
     });
 
-    // Connect GSAP ScrollTrigger with LocomotiveScroll
-    ScrollTrigger.scrollerProxy(scrollContainer.current, {
+    // ScrollTrigger proxy
+    ScrollTrigger.scrollerProxy(scrollRef.current, {
       scrollTop(value) {
         if (arguments.length) {
-          locoScroll.scrollTo(value, { duration: 0 });
+          locoScroll.current.scrollTo(value, {
+            duration: 0,
+            disableLerp: true,
+          });
         } else {
-          return locoScroll.scroll?.y || window.scrollY;
+          return locoScroll.current.scroll.instance.scroll.y;
         }
       },
       getBoundingClientRect() {
@@ -49,89 +52,87 @@ function Home() {
           height: window.innerHeight,
         };
       },
+      pinType: scrollRef.current.style.transform ? "transform" : "fixed",
     });
 
-    // RequestAnimationFrame sync
-    const raf = () => {
-      ScrollTrigger.update();
-      requestAnimationFrame(raf);
+    locoScroll.current.on("scroll", ScrollTrigger.update);
+
+    // Force refresh after all images/fonts loaded (build safe)
+    const onLoad = () => {
+      ScrollTrigger.refresh();
+      locoScroll.current.update();
     };
-    requestAnimationFrame(raf);
+    window.addEventListener("load", onLoad);
 
-    ScrollTrigger.refresh();
-
-    // Cleanup
-    return () => {
-      locoScroll.destroy();
-      ScrollTrigger.killAll();
-    };
-  }, []);
-
-  /* ---------------- GSAP ---------------- */
-  useGSAP(() => {
+    // ----------------- GSAP Animations -----------------
     const mm = gsap.matchMedia();
 
-    // Navbar color change
+    // Navbar color toggle
     ScrollTrigger.create({
-      trigger: ".panel",
-      scroller: scrollContainer.current,
+      trigger: `.${styles.panel}`,
+      scroller: scrollRef.current,
       start: "top top",
       onEnter: () => setNavDark(true),
       onLeaveBack: () => setNavDark(false),
     });
 
-    // Desktop animations
     mm.add("(min-width: 577px)", () => {
-      if (!curve.current || !horizontalContainer.current) return;
+      if (!curveRef.current || !horizontalRef.current) return;
 
       // Curve animation
-      gsap.to(curve.current, {
-        yPercent: 45,
+      gsap.to(curveRef.current, {
+        yPercent: -55,
         scrollTrigger: {
-          trigger: curve.current,
-          scroller: scrollContainer.current,
-          start: "top top",
+          trigger: curveRef.current,
+          scroller: scrollRef.current,
+          start: "top bottom",
           end: "bottom top",
           scrub: true,
         },
       });
 
-      // Horizontal scroll sections
+      // Horizontal scroll pinning
       const sections = gsap.utils.toArray(
-        ".panel",
-        horizontalContainer.current,
+        `.${styles.panel}`,
+        horizontalRef.current,
       );
+
+      const totalScroll = horizontalRef.current.scrollWidth - window.innerWidth;
+
       gsap.to(sections, {
         xPercent: -100 * (sections.length - 1),
         ease: "none",
         scrollTrigger: {
-          trigger: horizontalContainer.current,
-          scroller: scrollContainer.current,
+          scroller: scrollRef.current,
+          trigger: horizontalRef.current,
           pin: true,
           scrub: 1,
           start: "top top",
-          end: () =>
-            "+=" +
-            (horizontalContainer.current.scrollWidth - window.innerWidth),
+          end: () => `+=${totalScroll}`,
           invalidateOnRefresh: true,
         },
       });
     });
-  });
 
-  /* ---------------- JSX ---------------- */
+    // Cleanup
+    return () => {
+      window.removeEventListener("load", onLoad);
+      if (locoScroll.current) locoScroll.current.destroy();
+      ScrollTrigger.killAll();
+    };
+  }, []);
+
   return (
-    <div ref={scrollContainer} data-scroll-container className={styles.Home}>
+    <div ref={scrollRef} data-scroll-container className={styles.Home}>
       <Navbar navDark={navDark} />
 
       <div className={styles.heromain}>
         <Hero />
       </div>
 
-      {/* CURVE */}
       <div className={styles.CurveContainer}>
         <svg
-          ref={curve}
+          ref={curveRef}
           className={styles.curve}
           width="1120"
           height="275"
@@ -158,9 +159,8 @@ function Home() {
         </svg>
       </div>
 
-      {/* HORIZONTAL SCROLL SECTIONS */}
       <div
-        ref={horizontalContainer}
+        ref={horizontalRef}
         className={`${styles.HorizontalScrollWrapper} d-flex`}
       >
         <div className={styles.scrollWrapper}>
@@ -175,5 +175,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;
