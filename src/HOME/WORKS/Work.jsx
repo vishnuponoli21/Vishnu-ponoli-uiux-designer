@@ -1,5 +1,11 @@
 import React from "react";
 import styles from "./Work.module.css";
+import bushunt from "../../assets/IMAGE/projects/bushunt.png";
+import evox from "../../assets/IMAGE/projects/evox.png";
+import nidra from "../../assets/IMAGE/projects/nidra.png";
+import orvento from "../../assets/IMAGE/projects/orvento.png";
+import paybee from "../../assets/IMAGE/projects/paybee.png";
+import terrapod from "../../assets/IMAGE/projects/terrapod.png";
 
 function Work() {
   return (
@@ -13,78 +19,49 @@ function Work() {
         </div>
         <div className="row  mb-5 h-30 d-flex justify-content-center">
           <div className="col-md-4 text-center">
-            <iframe
-              src="https://www.behance.net/embed/project/232225721?ilo0=1"
-              height="216"
-              width="404"
-              allowfullscreen
-              lazyload
-              frameborder="0"
-              allow="clipboard-write"
-              refererPolicy="strict-origin-when-cross-origin"
-            ></iframe>
+            <a href="">
+              <div className={styles.projectImages}>
+                <img src={bushunt} alt="" />
+              </div>
+            </a>
           </div>
           <div className="col-md-4 text-center">
-            <iframe
-              src="https://www.behance.net/embed/project/228877529?ilo0=1"
-              height="216"
-              width="404"
-              allowfullscreen
-              lazyload
-              frameborder="0"
-              allow="clipboard-write"
-              refererPolicy="strict-origin-when-cross-origin"
-            ></iframe>
+            <a href="">
+              <div className={styles.projectImages}>
+                <img src={evox} alt="" />
+              </div>
+            </a>
           </div>
           <div className="col-md-4 text-center">
-            <iframe
-              src="https://www.behance.net/embed/project/232225721?ilo0=1"
-              height="216"
-              width="404"
-              allowfullscreen
-              lazyload
-              frameborder="0"
-              allow="clipboard-write"
-              refererPolicy="strict-origin-when-cross-origin"
-            ></iframe>
+            {" "}
+            <a href="">
+              <div className={styles.projectImages}>
+                <img src={nidra} alt="" />
+              </div>
+            </a>
           </div>
         </div>
         <div className="row h-30 d-flex justify-content-center">
           <div className="col-md-4 text-center">
-            <iframe
-              src="https://www.behance.net/embed/project/229832893?ilo0=1"
-              height="216"
-              width="404"
-              allowfullscreen
-              lazyload
-              frameborder="0"
-              allow="clipboard-write"
-              refererPolicy="strict-origin-when-cross-origin"
-            ></iframe>
+            <a href="">
+              <div className={styles.projectImages}>
+                <img src={orvento} alt="" />
+              </div>
+            </a>
           </div>
           <div className="col-md-4 text-center">
-            <iframe
-              src="https://www.behance.net/embed/project/230034595?ilo0=1"
-              height="216"
-              width="404"
-              allowfullscreen
-              lazyload
-              frameborder="0"
-              allow="clipboard-write"
-              refererPolicy="strict-origin-when-cross-origin"
-            ></iframe>
+            <a href="">
+              <div className={styles.projectImages}>
+                <img src={paybee} alt="" />
+              </div>
+            </a>
           </div>
           <div className="col-md-4 text-center">
-            <iframe
-              src="https://www.behance.net/embed/project/234933749?ilo0=1"
-              height="216"
-              width="404"
-              allowfullscreen
-              lazyload
-              frameborder="0"
-              allow="clipboard-write"
-              refererPolicy="strict-origin-when-cross-origin"
-            ></iframe>
+            <a href="">
+              <div className={styles.projectImages}>
+                <img src={terrapod} alt="" />
+              </div>
+            </a>
           </div>
         </div>
       </div>

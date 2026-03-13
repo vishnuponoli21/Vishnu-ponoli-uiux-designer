@@ -29,6 +29,18 @@
   -webkit-text-fill-color: transparent;
 
   /* Other styling for better visibility */
-  font-size: 100px;
+  font-size: 50px;
   font-weight: 500;
+}
+.projectImages {
+  position: relative;
+}
+.projectImages img {
+  position: relative;
+  width: 70%;
+  border-radius: 20px;
+}
+.projectImages img:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
 }

@@ -4,7 +4,15 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  /* IMPORTANT: remove overflow hidden */
+}
+
+.navBarMain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 40;
 }
 
 .heromain {
@@ -15,7 +23,7 @@
 
 .CurveContainer {
   position: absolute;
-  top: 23%;
+  top: 18%;
   width: 100%;
   height: 475px;
   overflow: visible;
@@ -61,19 +69,32 @@
   height: 100vh;
 }
 
+.connect {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: aqua;
+}
+
 /* MOBILE */
 @media (max-width: 576px) {
   .HorizontalScrollWrapper {
     height: auto;
     overflow: visible;
   }
+
   .CurveContainer {
     display: none;
   }
+
   .scrollWrapper {
     display: block;
     width: 100%;
   }
+
   .panel {
     width: 100%;
     height: auto;
@@ -85,6 +106,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
+  height: auto;
+  overflow-x: hidden;
 }

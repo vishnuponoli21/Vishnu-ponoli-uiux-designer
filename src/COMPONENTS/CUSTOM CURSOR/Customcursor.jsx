@@ -26,7 +26,7 @@ function Customcursor() {
         width: "10px",
         height: "10px",
         borderRadius: "50%",
-        backgroundColor: "black",
+        backgroundColor: "#11002193",
         pointerEvents: "none",
         transform: "translate(-50%, -50%)",
         zIndex: 9999,

@@ -1,11 +1,10 @@
-import React, { useRef, useLayoutEffect, useState } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LocomotiveScroll from "locomotive-scroll";
 
 import styles from "./Home.module.css";
 import Hero from "./HERO/Hero";
-import Navbar from "./NAVBAR/Navbar";
 import About from "./ABOUT/About";
 import Work from "./WORKS/Work";
 
@@ -18,12 +17,11 @@ export default function Home() {
   const curveRef = useRef(null);
   const horizontalRef = useRef(null);
   const locoScroll = useRef(null);
-  const [navDark, setNavDark] = useState(false);
 
   useLayoutEffect(() => {
     if (!scrollRef.current) return;
 
-    // Initialize LocomotiveScroll
+    // Initialize Locomotive
     locoScroll.current = new LocomotiveScroll({
       el: scrollRef.current,
       smooth: true,
@@ -31,6 +29,11 @@ export default function Home() {
       smartphone: { smooth: false },
       tablet: { smooth: false },
     });
+
+    window.locoScroll = locoScroll.current;
+
+    // Update ScrollTrigger on scroll
+    locoScroll.current.on("scroll", ScrollTrigger.update);
 
     // ScrollTrigger proxy
     ScrollTrigger.scrollerProxy(scrollRef.current, {
@@ -44,6 +47,7 @@ export default function Home() {
           return locoScroll.current.scroll.instance.scroll.y;
         }
       },
+
       getBoundingClientRect() {
         return {
           top: 0,
@@ -52,29 +56,19 @@ export default function Home() {
           height: window.innerHeight,
         };
       },
+
       pinType: scrollRef.current.style.transform ? "transform" : "fixed",
     });
 
-    locoScroll.current.on("scroll", ScrollTrigger.update);
+    // IMPORTANT: refresh after setup
+    ScrollTrigger.addEventListener("refresh", () =>
+      locoScroll.current.update(),
+    );
 
-    // Force refresh after all images/fonts loaded (build safe)
-    const onLoad = () => {
-      ScrollTrigger.refresh();
-      locoScroll.current.update();
-    };
-    window.addEventListener("load", onLoad);
+    ScrollTrigger.refresh();
 
-    // ----------------- GSAP Animations -----------------
+    // ---------------- GSAP Animations ----------------
     const mm = gsap.matchMedia();
-
-    // Navbar color toggle
-    ScrollTrigger.create({
-      trigger: `.${styles.panel}`,
-      scroller: scrollRef.current,
-      start: "top top",
-      onEnter: () => setNavDark(true),
-      onLeaveBack: () => setNavDark(false),
-    });
 
     mm.add("(min-width: 577px)", () => {
       if (!curveRef.current || !horizontalRef.current) return;
@@ -91,7 +85,7 @@ export default function Home() {
         },
       });
 
-      // Horizontal scroll pinning
+      // Horizontal scroll
       const sections = gsap.utils.toArray(
         `.${styles.panel}`,
         horizontalRef.current,
@@ -114,64 +108,75 @@ export default function Home() {
       });
     });
 
-    // Cleanup
     return () => {
-      window.removeEventListener("load", onLoad);
       if (locoScroll.current) locoScroll.current.destroy();
       ScrollTrigger.killAll();
     };
   }, []);
 
   return (
-    <div ref={scrollRef} data-scroll-container className={styles.Home}>
-      <Navbar navDark={navDark} />
+    <>
+      <div ref={scrollRef} data-scroll-container className={styles.Home}>
+        <div id="Home" className={styles.heromain}>
+          <Hero />
+        </div>
 
-      <div className={styles.heromain}>
-        <Hero />
-      </div>
+        <div className={styles.CurveContainer}>
+          <svg
+            ref={curveRef}
+            className={styles.curve}
+            width="1120"
+            height="275"
+            viewBox="0 0 1920 275"
+            fill="none"
+          >
+            <path
+              d="M1920 0H0V171C0 171 408.5 275 960 275C1511.5 275 1920 171 1920 171V0Z"
+              fill="url(#paint0_linear_1349_368)"
+            />
+            <defs>
+              <linearGradient
+                id="paint0_linear_1349_368"
+                x1="960"
+                y1="0"
+                x2="960"
+                y2="170"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#7C40B3" />
+                <stop offset="1" stopColor="#431CA2" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
 
-      <div className={styles.CurveContainer}>
-        <svg
-          ref={curveRef}
-          className={styles.curve}
-          width="1120"
-          height="275"
-          viewBox="0 0 1920 275"
-          fill="none"
+        <div
+          ref={horizontalRef}
+          className={`${styles.HorizontalScrollWrapper} d-flex`}
         >
-          <path
-            d="M1920 0H0V171C0 171 408.5 275 960 275C1511.5 275 1920 171 1920 171V0Z"
-            fill="url(#paint0_linear_1349_368)"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_1349_368"
-              x1="960"
-              y1="0"
-              x2="960"
-              y2="170"
-              gradientUnits="userSpaceOnUse"
+          <div className={styles.scrollWrapper}>
+            <section
+              id="About"
+              className={`panel ${styles.panel} ${styles.About}`}
             >
-              <stop stopColor="#7C40B3" />
-              <stop offset="1" stopColor="#431CA2" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+              <About />
+            </section>
 
-      <div
-        ref={horizontalRef}
-        className={`${styles.HorizontalScrollWrapper} d-flex`}
-      >
-        <div className={styles.scrollWrapper}>
-          <section className={`panel ${styles.panel} ${styles.About}`}>
-            <About />
-          </section>
-          <section className={`panel ${styles.panel} ${styles.Works}`}>
-            <Work />
+            <section
+              id="Work"
+              className={`panel ${styles.panel} ${styles.Works}`}
+            >
+              <Work />
+            </section>
+          </div>
+        </div>
+
+        <div>
+          <section id="Connect" className={`${styles.connect}`}>
+            connect
           </section>
         </div>
       </div>
-    </div>
+    </>
   );
 }
