@@ -203,13 +203,14 @@
     /* display: flex; */
     justify-content: center;
     align-items: center;
-    background: #ffffff6d;
+    background: #ffffffaf;
   }
 
   .leftText p {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 400;
     margin: 0 15px 0 15px;
+    padding: 10px;
   }
 
   .rightText p {
