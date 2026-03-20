@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "BITSUMIS";
-  src: url("../../assets/FONTS/BITSUMIS.TTF") format("truetype");
+  src: url("../../assets/FONTS/BITSUMIS.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* ensures text is visible while loading */
@@ -175,7 +175,7 @@
     position: relative;
   }
   .mainAboutText h1 {
-    font-size: 80px;
+    font-size: 70px;
     font-weight: 500;
     z-index: -1;
   }
@@ -199,7 +199,7 @@
 
   .leftText .leftTextWrapper {
     position: relative;
-    top: 12%;
+    top: 35%;
     /* display: flex; */
     justify-content: center;
     align-items: center;
@@ -219,7 +219,7 @@
 
   .btn {
     position: relative;
-    bottom: 10%;
+    top: 13%;
     background: linear-gradient(to right, #df7dcf, #411ba2);
     box-shadow:
       inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),

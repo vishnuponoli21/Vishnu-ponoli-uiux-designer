@@ -2,10 +2,12 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./Hero.module.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import bushunted from "../../assets/IMAGE/bus hunt.png";
 import nidraed from "../../assets/IMAGE/nidra.png";
 import mycv from "../../assets/MYCV/vishnuPonoli.pdf";
+
 import {
   faLinkedinIn,
   faGithub,

@@ -7,6 +7,7 @@ import styles from "./Home.module.css";
 import Hero from "./HERO/Hero";
 import About from "./ABOUT/About";
 import Work from "./WORKS/Work";
+import Connectme from "./CONNECT/Connectme";
 
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
@@ -116,12 +117,16 @@ export default function Home() {
 
   return (
     <>
-      <div ref={scrollRef} data-scroll-container className={styles.Home}>
-        <div id="Home" className={styles.heromain}>
+      <div
+        ref={scrollRef}
+        data-scroll-container
+        className={`${styles.Home} container-fluid`}
+      >
+        <div id="Home" className={`${styles.heromain} row`}>
           <Hero />
         </div>
 
-        <div className={styles.CurveContainer}>
+        <div className={`${styles.CurveContainer} `}>
           <svg
             ref={curveRef}
             className={styles.curve}
@@ -152,7 +157,7 @@ export default function Home() {
 
         <div
           ref={horizontalRef}
-          className={`${styles.HorizontalScrollWrapper} d-flex`}
+          className={`${styles.HorizontalScrollWrapper} row d-flex`}
         >
           <div className={styles.scrollWrapper}>
             <section
@@ -171,10 +176,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div>
-          <section id="Connect" className={`${styles.connect}`}>
-            connect
-          </section>
+        <div id="Connect" className={`${styles.connect} row`}>
+          <Connectme />
         </div>
       </div>
     </>

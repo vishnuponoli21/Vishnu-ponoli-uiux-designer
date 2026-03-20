@@ -91,4 +91,8 @@
     width: 50%;
     background: #000;
   }
+  .logo img {
+    margin: 20px 0 0 10px;
+    width: 40px;
+  }
 }

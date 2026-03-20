@@ -1,6 +1,6 @@
 @font-face {
   font-family: "BITSUMIS";
-  src: url("../../assets/FONTS/BITSUMIS.TTF") format("truetype");
+  src: url("../../assets/FONTS/BITSUMIS.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* ensures text is visible while loading */
